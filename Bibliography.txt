@@ -1,0 +1,2 @@
+https://www.ibm.com/support/knowledgecenter/SSEQVQ_8.1.9/client/c_cmd_filespecsyntax.html // 1024 length
+http://web.mit.edu/gnu/doc/html/rlman_2.html // add_history
