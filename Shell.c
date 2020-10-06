@@ -4,6 +4,22 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+#define clear() printf("\033[H\033[J") 
+
+void init_shell() 
+{ 
+    clear(); 
+    printf("\n\n************************"); 
+    printf("\n\n\n****Shell by Mohammad****"); 
+    printf("\n\n\n***********************"); 
+    char* username = getenv("USER"); 
+    printf("\n\n\nUSER is: @%s", username); 
+    printf("\n"); 
+    sleep(1); 
+    clear(); 
+} 
+
+
 /* -------------------------------------------Read Input------------------------------*/
 char *ReadLine(void)
 {
@@ -59,8 +75,7 @@ char **SplitLine(char *line)
 
 
 /* ----------------------------------------Execute Input-------------------------------------*/
-int Launch(char **args)
-{
+int Launch(char **args) {
   pid_t pid, wpid;
   int status;
 
@@ -144,8 +159,7 @@ int lsh_exit(char **args)
   return 0;
 }
 
-int execute(char **args)
-{
+int execute(char **args) {
   int i;
 
   if (args[0] == NULL) {
@@ -159,14 +173,17 @@ int execute(char **args)
     }
   }
 
-  return lsh_launch(args);
+  return Launch(args);
 }
 
 
 
 int main(int argc, char **argv)
 {
-    //Infinte loop to keep the terminal running
+
+    init_shell();
+    
+    /* //Infinte loop to keep the terminal running
     char *line;
     char **args;
     int status;
@@ -178,7 +195,9 @@ int main(int argc, char **argv)
             args = SplitLine(line); 
         }
         
-    }
+    } */
+
+    
     
   return EXIT_SUCCESS;
 }
